@@ -31,7 +31,7 @@ const querystring = require('querystring');
 const exec = require('child_process').exec;
 const $ = new Env();
 const timeout = 15000; //超时时间(单位毫秒)
-console.log("加载sendNotify，当前版本: 20211227");
+console.log("加载sendNotify，当前版本: 20211228");
 // =======================================go-cqhttp通知设置区域===========================================
 //gobot_url 填写请求地址http://127.0.0.1/send_private_msg
 //gobot_token 填写在go-cqhttp文件设置的访问密钥
@@ -1311,7 +1311,7 @@ async function sendNotify(text, desp, params = {}, author = '\n\n本通知 By ht
                                 }
                             }
                             desp = desp.replace(new RegExp(`${$.UserName}|${$.nickName}`, 'gm'), $.Remark);
-
+                            strsummary = strsummary.replace(new RegExp(`${$.UserName}|${$.nickName}`, 'gm'), $.Remark);
                             //额外处理2，nickName不包含星号，但是确实是手机号
                             var tempname = $.UserName;
                             if (tempname.length == 13 && tempname.substring(8)) {
@@ -1319,6 +1319,7 @@ async function sendNotify(text, desp, params = {}, author = '\n\n本通知 By ht
                                 //console.log("额外处理2:"+tempname);
                                 text = text.replace(new RegExp(tempname, 'gm'), $.Remark);
                                 desp = desp.replace(new RegExp(tempname, 'gm'), $.Remark);
+								strsummary = strsummary.replace(new RegExp(tempname, 'gm'), $.Remark);
                             }
 
                         } catch (err) {
@@ -1452,13 +1453,13 @@ function getQLinfo(strCK, intcreated, strTimestamp, strRemark) {
         if (strRemark) {
             var Tempindex = strRemark.indexOf("@@");
             if (Tempindex != -1) {
-                console.log(strPtPin+": 检测到NVJDC的备注格式,尝试获取登录时间,瑞思拜~!");
+                //console.log(strPtPin + ": 检测到NVJDC的备注格式,尝试获取登录时间,瑞思拜~!");
                 var TempRemarkList = strRemark.split("@@");
                 for (let j = 1; j < TempRemarkList.length; j++) {
                     if (TempRemarkList[j]) {
                         if (TempRemarkList[j].length == 13) {
                             DateTimestamp = new Date(parseInt(TempRemarkList[j]));
-                            console.log(strPtPin+": 获取登录时间成功:" + GetDateTime(DateTimestamp));
+                            //console.log(strPtPin + ": 获取登录时间成功:" + GetDateTime(DateTimestamp));
                             break;
                         }
                     }
