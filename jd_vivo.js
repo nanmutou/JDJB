@@ -62,7 +62,7 @@ let shareList = [];
 async function main() {
     $.UA =  $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.2.2;14.2;%E4%BA%AC%E4%B8%9C/9.2.2 CFNetwork/1206 Darwin/20.1.0");
     Host = `lzkjdz-isv.isvjcloud.com`;
-    Referer = `https://lzkjdz-isv.isvjcloud.com/m/1000085868/99/${$.shareUuid}/?helpUuid=${$.shareUuid}`;
+    Referer = `https://lzkjdz-isv.isvjcloud.com/m/1000085868/99/2112100008586801/?helpUuid=${$.shareUuid}`;
     console.log(`活动地址：${Referer}`);
     token = '',LZ_TOKEN_KEY='',LZ_TOKEN_VALUE='',lz_jdpin_token = ``,venderId = ``,shopId = ``,pin =  ``,nickname = '',actorUuid = '';
     token = await getToken();
