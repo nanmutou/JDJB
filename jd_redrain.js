@@ -2,7 +2,6 @@
 整点京豆雨
 更新时间：2021-12-8
 脚本兼容: Quantumult X, Surge, Loon, JSBox, Node.js
-by：msechen
 ==============Quantumult X==============
 [task_local]
 #整点京豆雨
