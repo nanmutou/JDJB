@@ -25,7 +25,7 @@ let shareList = [];
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
         return;
     }
-    $.shareUuid = '';``
+    $.shareUuid = '';
     let shareList = ['6391f12f69794d8c8225ed87e8e2640c'];
     let activityList = [{'id':'2112100008586801','endTime':'1640966400000'}];
     for (let i = 0; i < cookiesArr.length; i++) {
