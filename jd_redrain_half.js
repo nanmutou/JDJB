@@ -39,10 +39,6 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', { "open-url": "https://bean.m.jd.com/" });
     return;
   }
-  if (!jd_redrain_half_url) {
-    $.log(`\n今日龙王🐲出差，天气晴朗☀️，改日再来～\n`);
-    return;
-  }
   let hour = (new Date().getUTCHours() + 8) % 24;
   $.log(`\n正在远程获取${hour}点30分京豆雨ID\n`);
   await $.wait(1000);
