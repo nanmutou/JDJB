@@ -47,6 +47,10 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
   $.log(`\n正在远程获取${hour}点30分京豆雨ID\n`);
   await $.wait(1000);
   let redIds = await getRedRainIds(jd_redrain_half_url);
+  if (!redIds) {
+    await $.wait(1000)
+    redIds = await getRedRainIds('https://gitee.com/KingRan521/JD-Scripts/raw/master/shareCodes/redrain_half.json')
+  }
   if (!redIds.length) {
     $.log(`\n今日龙王🐲出差，天气晴朗☀️，改日再来～\n`);
     return;

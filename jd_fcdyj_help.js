@@ -39,9 +39,7 @@ if ($.isNode()) {
 const JD_API_HOST = `https://api.m.jd.com`;
 !(async () => {
 	console.log('助力逻辑：优先助力互助码环境变量')
-    console.log('环境变量添加：环境变量：export dyjCode="cab8da78fc144424b1f2eee0531a4e3f20251632067205606@aN8mFXv3ct4DsDWk6uKZew"')
     console.log('环境变量添加：export first="redEnvelopeId@inviter" 只支持单个账号助力')
-	console.log('请自行添加环境变量，否则将助力作者，账号太少的可以禁用"')
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {
             "open-url": "https://bean.m.jd.com/bean/signIndex.action"

@@ -43,12 +43,12 @@ if ($.isNode()) {
   }
   if (!jd_redrain_activityId) {
     $.log(`\n本地红包雨配置获取错误，尝试从远程读取配置\n`);
-    await $.wait(1000);
-    if (!jd_redrain_url) {
-      $.log(`\n今日龙王🐲出差，天气晴朗☀️，改日再来～\n`);
-      return;
-    }    
+    await $.wait(1000);   
     let RedRainIds = await getRedRainIds(jd_redrain_url);
+	if (!RedRainIds) {
+    await $.wait(1000)
+    RedRainIds = await getRedRainIds('https://gitee.com/KingRan521/JD-Scripts/raw/master/shareCodes/redrain.json')
+	}
     for (let i = 0; i < 1; i++) {
       jd_redrain_activityId = RedRainIds[0];
     }
