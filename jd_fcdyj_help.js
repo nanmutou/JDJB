@@ -2,7 +2,7 @@
 活动入口： 京东极速版-我的-发财大赢家
  * /
  * 助力逻辑：优先助力互助码环境变量
- * 环境变量：export dyjCode="cab8da78fc144424b1f2eee0531a4e3f20251632067205606@aN8mFXv3ct4DsDWk6uKZew"
+ * 环境变量：export dyjCode="redEnvelopeId@inviter"
  * /
 已支持IOS双京东账号, Node.js支持N个京东账号
 脚本兼容: QuantumultX, Surge, Loon, 小火箭，JSBox, Node.js
@@ -39,7 +39,7 @@ if ($.isNode()) {
 const JD_API_HOST = `https://api.m.jd.com`;
 !(async () => {
 	console.log('助力逻辑：优先助力互助码环境变量')
-    console.log('环境变量添加：export first="redEnvelopeId@inviter" 只支持单个账号助力')
+    console.log('环境变量添加：export dyjCode="redEnvelopeId@inviter" 只支持单个账号助力')
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {
             "open-url": "https://bean.m.jd.com/bean/signIndex.action"
