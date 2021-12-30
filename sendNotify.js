@@ -31,7 +31,7 @@ const querystring = require('querystring');
 const exec = require('child_process').exec;
 const $ = new Env();
 const timeout = 15000; //超时时间(单位毫秒)
-console.log("加载sendNotify，当前版本: 20211230");
+console.log("加载sendNotify，当前版本: 20211230_V3");
 // =======================================go-cqhttp通知设置区域===========================================
 //gobot_url 填写请求地址http://127.0.0.1/send_private_msg
 //gobot_token 填写在go-cqhttp文件设置的访问密钥
@@ -160,7 +160,7 @@ if (Fileexists) {
         TempCK = JSON.parse(TempCK);
     }
 }
-let strUidFile = './CK_WxPusherUid.json';
+let strUidFile = '/ql/scripts/CK_WxPusherUid.json';
 let UidFileexists = fs.existsSync(strUidFile);
 let TempCKUid = [];
 if (UidFileexists) {
@@ -331,8 +331,8 @@ async function sendNotify(text, desp, params = {}, author = '\n\n本通知 By ht
                                         for (var TempNotifyl in strTempNotify) {
                                             strAllNotify += strTempNotify[TempNotifyl] + '\n';
                                         }
-                                    }
-                                    co */nsole.log(`检测到设定了温馨提示,将在推送信息中置顶显示...`);
+                                    }*/
+                                    console.log(`检测到设定了温馨提示,将在推送信息中置顶显示...`);
                                     strAllNotify = `\n【✨✨✨✨温馨提示✨✨✨✨】\n` + strAllNotify;
                                     console.log(strAllNotify);
                                 }
