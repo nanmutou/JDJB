@@ -27,7 +27,7 @@ cron:1 1,14 31,1-9 12,1 *
 1 1,14 31,1-9 12,1 * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_opencardL36.js, tag=2021.12.31-1.9大牌联合 年货盛宴, enabled=true
 
 */
-const $ = new Env('10.31~11.12 惠聚京东 好物连连');
+const $ = new Env("2021.12.31-1.9大牌联合 年货盛宴");
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
