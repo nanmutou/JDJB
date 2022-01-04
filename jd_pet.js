@@ -156,28 +156,6 @@ async function jdPet() {
     }
 }
 
-async function GetShareCode() {
-    try {
-        //查询jd宠物信息
-        const initPetTownRes = await request('initPetTown');
-        if (initPetTownRes.code === '0' && initPetTownRes.resultCode === '0' && initPetTownRes.message === 'success') {
-            $.petInfo = initPetTownRes.result;
-            if ($.petInfo.userStatus == 0 || $.petInfo.petStatus == 5 || $.petInfo.petStatus == 6 || !$.petInfo.goodsInfo) {
-				console.log(`【京东账号${$.index}（${$.UserName}）的互助码】\n宠物状态不能被助力，跳过...`);
-                return;
-            }
-            console.log(`【京东账号${$.index}（${$.UserName}）的互助码】\n${$.petInfo.shareCode}`);
-            newShareCodes.push($.petInfo.shareCode);			
-        }
-    } catch (e) {
-        $.logErr(e)
-        const errMsg = `【京东账号${$.index} ${$.nickName || $.UserName}】\n任务执行异常，请检查执行日志 ‼️‼️`;
-        if ($.isNode())
-            await notify.sendNotify(`${$.name}`, errMsg);
-        $.msg($.name, '', `${errMsg}`);
-    }
-}
-
 // 收取所有好感度
 async function energyCollect() {
     console.log('开始收取任务奖励好感度');
