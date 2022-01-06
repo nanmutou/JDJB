@@ -20,7 +20,7 @@ JoyJd任务脚本 = type=cron,script-path=https://raw.githubusercontent.com/King
 
 
 */
-const $ = new Env('JoyJd任务脚本');
+const $ = new Env('会员开卡赢京豆');
 const Faker=require('./sign_graphics_validate.js') 
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -37,6 +37,8 @@ if ($.isNode()) {
 }
 message = ""
 !(async () => {
+	console.log('入口：https://prodev.m.jd.com/mall/active/3z1Vesrhx3GCCcBn2HgbFR4Jq68o/index.html')
+	console.log('开一张卡获得10豆')
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {
       "open-url": "https://bean.m.jd.com/"
