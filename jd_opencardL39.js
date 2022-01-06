@@ -22,7 +22,7 @@ cron:5 0,17 5-31 1 *
 
 */
 
-const $ = new Env('1.5~1.25 1.5~1.31 年货盛宴，春节集福攻略');
+const $ = new Env('1.5~1.31 年货盛宴，春节集福攻略');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
