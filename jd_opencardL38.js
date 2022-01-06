@@ -7,11 +7,11 @@
 入口：[ 1.5~1.25 集“年味卡”，享年货盛宴 (https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity?activityId=cd2022n4ci22tlj1s2w3245u1mk&shareUuid=01f9ed66c62d4c418822efa47134ba6c)]
 
 
-cron:30 0,14 1-25 1 *
+cron:30 0,14 5-25 1 *
 ============Quantumultx===============
 [task_local]
 1.5~1.25 集“年味卡”，享年货盛宴
-30 0,14 1-25 1 *  jd_opencardL38.js, tag=1.5~1.25 集“年味卡”，享年货盛宴, enabled=true
+30 0,14 5-25 1 *  jd_opencardL38.js, tag=1.5~1.25 集“年味卡”，享年货盛宴, enabled=true
 
 
 
