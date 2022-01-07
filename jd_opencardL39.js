@@ -156,7 +156,7 @@ async function run() {
     }else{
       console.log('已全部开卡')
     }
-    
+    await takePostRequest('addSku');
     $.log("关注: " + $.followShop)
     if(!$.followShop && !$.outFlag){
       flag = true
@@ -331,7 +331,7 @@ async function takePostRequest(type) {
       case 'visitSku':
       case 'toShop':
       case 'addSku':
-        url = `${domain}/dingzhi/dz/openCard/saveTask`;
+        url = `${domain}/play/monopoly/doTasks`;
         let taskType = ''
         let taskValue = ''
         if(type == 'viewVideo'){
@@ -344,8 +344,8 @@ async function takePostRequest(type) {
           taskType = 14
           taskValue = $.toShopValue || 14
         }else if(type == 'addSku'){
-          taskType = 2
-          taskValue = $.addSkuValue || 2
+          taskType = 21
+          taskValue = $.addSkuValue || 21
         }
         body = `activityId=${$.activityId}&pin=${encodeURIComponent($.Pin)}&actorUuid=${$.actorUuid}&taskType=${taskType}&taskValue=${taskValue}`
         break;
