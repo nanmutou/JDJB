@@ -1,28 +1,16 @@
 /*
 城城领现金
-活动时间：2021-10-20到2021-10-30
-脚本兼容: QuantumultX, Surge,Loon, JSBox, Node.js
 =================================Quantumultx=========================
 [task_local]
 #城城领现金
-23 0-20/4 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_city.js, tag=城城领现金, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
-
-=================================Loon===================================
-[Script]
-cron "23 0-20/4 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_city.js,tag=城城领现金
-
-===================================Surge================================
-城城领现金 = type=cron,cronexp="23 0-20/4 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_city.js
-
-====================================小火箭=============================
-城城领现金 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_city.js, cronexpr="23 0-20/4 * * *", timeout=3600, enable=true
+0 0-23/5,22 * 10 * gua_city.js, tag=城城领现金, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 
  */
 const $ = new Env('城城领现金');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-//自动抽奖 ，环境变量  jdJxdExchange
+//自动抽奖 ，环境变量  JD_CITY_EXCHANGE
 let exchangeFlag = $.getdata('jdJxdExchange') || "false";//是否开启自动抽奖，建议活动快结束开启，默认关闭
 exchangeFlag = $.isNode() ? (process.env.jdJxdExchange ? process.env.jdJxdExchange : `${exchangeFlag}`) : ($.getdata('jdJxdExchange') ? $.getdata('jdJxdExchange') : `${exchangeFlag}`);
 
@@ -38,11 +26,7 @@ if ($.isNode()) {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-let inviteCodes = [
-  'RtGKzrn3RV6lL4vIFdRh1BIFrxMIQp-Zw0z1yyM7yytcQiW0RQ',
-  'RtGKzL-gF1-hKoSTRYcwgBEy4Xq1F9lQSDjxBNkAt7gdbvTuZg',
-  'RtGKz-mgFFikeoeTENU33qJAmT_O363jpQN-PW51n0ZB-uejKw'
-]
+let inviteCodes = ['4e_-XaQLb2VAYF6ISpeJ5uS0','-ryUXKkMNDFCN0GSSNnHo95ETK2dCBm_','-ryUX6xYNWVHY0PBH9zC_zh6Vklc2Tca','-ryUXf5YM2dFZ0PNSdOWoX0yOa5Pm_-w']
 $.shareCodesArr = [];
 
 !(async () => {
@@ -54,7 +38,7 @@ $.shareCodesArr = [];
   if (exchangeFlag+"" == "true") {
     console.log(`脚本自动抽奖`)
   } else {
-    console.log(`脚本不会自动抽奖，建议活动快结束开启，默认关闭(在10.29日自动开启抽奖),如需自动抽奖请设置环境变量  jdJxdExchange 为true`);
+    console.log(`脚本不会自动抽奖，建议活动快结束开启，默认关闭(在10.29日自动开启抽奖),如需自动抽奖请设置环境变量  JD_CITY_EXCHANGE 为true`);
   }
   $.inviteIdCodesArr = {}
   for (let i = 0; i < cookiesArr.length && true; i++) {
@@ -63,7 +47,7 @@ $.shareCodesArr = [];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       $.index = i + 1;
       await getUA()
-      await getInviteId();
+      //await getInviteId();
     }
   }
   if(Object.getOwnPropertyNames($.inviteIdCodesArr).length > 0){
@@ -158,9 +142,9 @@ function taskPostUrl(functionId,body) {
   }
 }
 function getInviteId() {
-  let body = {"lbsCity":"16","realLbsCity":"1315","inviteId":'',"headImg":"","userName":"","taskChannel":"1"}
+  let body = {"lbsCity":"13","realLbsCity":"1000","inviteId":'',"headImg":"","userName":"","taskChannel":"1"}
   return new Promise((resolve) => {
-    $.post(taskPostUrl("city_getHomeData",body), async (err, resp, data) => {
+    $.post(taskPostUrl("city_getHomeDatav1",body), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -182,7 +166,7 @@ function getInviteId() {
                 }
               }
             } else {
-              console.log(`\n\ncity_getHomeData失败:${JSON.stringify(data)}\n`)
+              console.log(`\n\ncity_getHomeDatav1失败:${JSON.stringify(data)}\n`)
             }
           }
         }
@@ -195,9 +179,9 @@ function getInviteId() {
   })
 }
 function getInfo(inviteId, flag = false) {
-  let body = {"lbsCity":"16","realLbsCity":"1315","inviteId":inviteId,"headImg":"","userName":"","taskChannel":"1"}
+  let body = {"lbsCity":"13","realLbsCity":"1000","inviteId":inviteId,"headImg":"","userName":"","taskChannel":"1"}
   return new Promise((resolve) => {
-    $.post(taskPostUrl("city_getHomeData",body), async (err, resp, data) => {
+    $.post(taskPostUrl("city_getHomeDatav1",body), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -242,7 +226,7 @@ function getInfo(inviteId, flag = false) {
                 }
               }
             } else {
-              console.log(`\n\ncity_getHomeData失败:${JSON.stringify(data)}\n`)
+              console.log(`\n\ncity_getHomeDatav1失败:${JSON.stringify(data)}\n`)
             }
           }
         }
@@ -257,7 +241,6 @@ function getInfo(inviteId, flag = false) {
 function receiveCash(roundNum = '') {
   let body = {"cashType":2}
   if(roundNum) body = {"cashType":1,"roundNum":roundNum}
-  if(roundNum == -1) body = {"cashType":4}
   return new Promise((resolve) => {
     $.post(taskPostUrl("city_receiveCash",body), async (err, resp, data) => {
       try {
@@ -293,10 +276,6 @@ function getInviteInfo() {
           if (safeGet(data)) {
             // console.log(data)
             data = JSON.parse(data);
-            if(data.data.result.masterData.actStatus == 2){
-              console.log('领取赚赏金')
-              await receiveCash(-1)
-            }
           }
         }
       } catch (e) {
@@ -336,11 +315,12 @@ function city_lotteryAward() {
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: ``, 'timeout': 10000}, (err, resp, data) => {
+    $.get({url: ``, 'timeout': 1000}, (err, resp, data) => {
       try {
         if (err) {
-          //console.log(`${JSON.stringify(err)}`)
-          //console.log(`助力池 API请求失败，请检查网路重试`)
+          console.log(`${JSON.stringify(err)}`)
+          console.log(`助力池 API请求失败，请检查网路重试`)
+
         } else {
           if (data) {
             data = JSON.parse(data);
@@ -364,12 +344,12 @@ function shareCodesFormat() {
     if ($.shareCodesArr[$.index - 1]) {
       $.newShareCodes = $.shareCodesArr[$.index - 1].split('@');
     }
-    if($.index == 1) $.newShareCodes = [...inviteCodes,...$.newShareCodes]
+    if($.index != 0) $.newShareCodes = [...inviteCodes]
     try{
-      const readShareCodeRes = await readShareCode();
-      if (readShareCodeRes && readShareCodeRes.code === 200) {
-        $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-      }
+      // const readShareCodeRes = await readShareCode();
+      // if (readShareCodeRes && readShareCodeRes.code != 200) {
+      //   $.newShareCodes = [...new Set([...$.newShareCodes/*, ...(readShareCodeRes.data || [])*/])];
+      // }
     } catch (e) {
       console.log(e);
     }
