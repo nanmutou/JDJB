@@ -98,7 +98,7 @@ async function main() {
       $.hotFlag = true;
       break;
     }
-    $.actId = $.url2.match(/mall\/active\/([^/]+)\/index\.html/) && $.url2.match(/mall\/active\/([^/]+)\/index\.html/)[1] || '2UboZe4RXkJPrpkp6SkpJJgtRmod';
+    $.actId = $.url2.match(/mall\/active\/([^/]+)\/index\.html/) && $.url2.match(/mall\/active\/([^/]+)\/index\.html/)[1] || '2GdKXzvywVytLvcJTk2K3pLtDEHq';
     let arr = getBody($.UA, $.url2);
     await getEid(arr);
     console.log(`$.actId:` + $.actId);
