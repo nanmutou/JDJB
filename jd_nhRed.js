@@ -11,22 +11,21 @@ export jd_rebatePin="pin1,pin2"
 ============Quantumultx===============
 [task_local]
 #年货节火力值
-0 0,8,20,22 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_nhjred.js, tag=年货节火力值, enabled=true
+0 0,10,20,22 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_nhjred.js, tag=年货节火力值, enabled=true
 
 ================Loon==============
 [Script]
-cron "0 0,8,20,22 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js,tag=年货节火力值
+cron "0 0,10,20,22 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js,tag=年货节火力值
 
 ===============Surge=================
-年货节火力值 = type=cron,cronexp="0 0,8,20,22 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js
+年货节火力值 = type=cron,cronexp="0 0,10,20,22 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js
 
 ============小火箭=========
-年货节火力值 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js, cronexpr="0 0,8,20,22 * * *", timeout=3600, enable=true
+年货节火力值 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js, cronexpr="0 0,10,20,22 * * *", timeout=3600, enable=true
 */
 const $ = new Env('年货节火力值');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
-let rebateCodes = 'SKib2Yf'
 let rebatePin = ''
 CryptoScripts()
 $.CryptoJS = $.isNode() ? require('crypto-js') : CryptoJS;
@@ -41,10 +40,9 @@ if ($.isNode()) {
 } else {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
-rebateCodes = $.isNode() ? (process.env.jd_rebateCode ? process.env.jd_rebateCode : `${rebateCodes}`) : ($.getdata('jd_rebateCode') ? $.getdata('jd_rebateCode') : `${rebateCodes}`);
 rebatePin = $.isNode() ? (process.env.jd_rebatePin ? process.env.jd_rebatePin : `${rebatePin}`) : ($.getdata('jd_rebatePin') ? $.getdata('jd_rebatePin') : `${rebatePin}`);
 let rebatePinArr = rebatePin && rebatePin.split(',') || []
-rebateCode = rebateCodes
+let rebateCode = ''
 message = ''
 newCookie = ''
 resMsg = ''
@@ -153,6 +151,10 @@ let nowTime = new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*
 
 async function run(type = 0){
   try{
+    let rebateCodes = ["SKib2Yf", "SMy132Y", "SLyGhBd"];
+    rebateCodes = rebateCodes[Math.floor((Math.random() * rebateCodes.length))]
+    rebateCodes = $.isNode() ? (process.env.jd_rebateCode ? process.env.jd_rebateCode : `${rebateCodes}`) : ($.getdata('jd_rebateCode') ? $.getdata('jd_rebateCode') : `${rebateCodes}`);
+    rebateCode = rebateCodes
     resMsg = ''
     let s = 0
     let t = 0
@@ -431,7 +433,10 @@ function getUrl1() {
 
 function getUrl() {
   return new Promise(resolve => {
-    if($.again == true) rebateCode = 'S'+'K'+'i'+'b'+'2'+'Y'+'f'
+    if($.again == true) {
+        rebateCodes = ["SKib2Yf", "SMy132Y", "SLyGhBd"];
+        rebateCode = rebateCodes[Math.floor((Math.random() * rebateCodes.length))]
+    }
     const options = {
       url: `https://u.jd.com/${rebateCode}${$.shareCode && "?s="+$.shareCode || ""}`,
       followRedirect:false,
