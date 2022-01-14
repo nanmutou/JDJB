@@ -1,6 +1,6 @@
 /*
 #天天压岁钱
-50 0,16 * * * jd_ttysq.js
+50 0,14,20 * * * jd_ttysq.js
  */
 const $ = new Env('天天压岁钱');
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -95,7 +95,7 @@ const JD_API_HOST = `https://m.jingxi.com`;
                         console.log(`\n京东账号${$.index} ${$.nickName || $.UserName}去助力${$.shareCoseList[y].user}助力码${$.shareCoseList[y].code}`)
                         console.log(`助力任务`)
                         await task(`jxnhj/DoTask`, `taskId=${$.taskId}&strShareId=${$.shareCoseList[y].code}&bizCode=jxnhj_task&configExtra=`);
-                        //if ($.max === true){}
+                        if ($.max === true){$.shareCoseList[y].beHelp = false}
                         await $.wait(4000);
                         if ($.canHelp === false) { break }
                     }
