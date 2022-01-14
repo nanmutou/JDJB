@@ -16,7 +16,7 @@ cron:30 5,20 14-20 1 *
 ============Quantumultx===============
 [task_local]
 #1.14～1.20 大牌会员日
-30 5,20 14-20 1 * jd_opencard93.js, tag=1.14～1.20 大牌会员日, enabled=true
+30 5,20 14-20 1 * jd_opencardL46.js, tag=1.14～1.20 大牌会员日, enabled=true
 
 */
 
