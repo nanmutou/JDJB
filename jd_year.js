@@ -1,6 +1,6 @@
 /**
 京东超市年货日历
-cron 36 4,16 * * * year.js
+36 4,16 * * * jd_year.js
 TG频道：https://t.me/sheeplost
 */
 const $ = new Env("京东超市年货日历");
