@@ -26,6 +26,7 @@ cron "0 0,10,20,22 * * *" script-path=https://raw.githubusercontent.com/KingRan/
 const $ = new Env('年货节火力值');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
+let rebateCodes = ''
 let rebatePin = ''
 CryptoScripts()
 $.CryptoJS = $.isNode() ? require('crypto-js') : CryptoJS;
@@ -151,14 +152,16 @@ let timeH = $.time('H')
 
 async function run(type = 0){
   try{
-    let rebateCodes = ["SKib2Yf", "SMy132Y", "SLyGhBd"];
+    rebateCodes = ["SKib2Yf", "SMy132Y", "SLyGhBd"];
     rebateCodes = rebateCodes[Math.floor((Math.random() * rebateCodes.length))]
     rebateCodes = $.isNode() ? (process.env.jd_rebateCode ? process.env.jd_rebateCode : `${rebateCodes}`) : ($.getdata('jd_rebateCode') ? $.getdata('jd_rebateCode') : `${rebateCodes}`);
     rebateCode = rebateCodes
+    console.log(rebateCode)
     resMsg = ''
     let s = 0
     let t = 0
     do{
+      rebateCode = rebateCodes
       if(t>2) s = 0
       $.flag = 0
       newCookie = ''
@@ -433,10 +436,6 @@ function getUrl1() {
 
 function getUrl() {
   return new Promise(resolve => {
-    if($.again == true) {
-        rebateCodes = ["SKib2Yf", "SMy132Y", "SLyGhBd"];
-        rebateCode = rebateCodes[Math.floor((Math.random() * rebateCodes.length))]
-    }
     const options = {
       url: `https://u.jd.com/${rebateCode}${$.shareCode && "?s="+$.shareCode || ""}`,
       followRedirect:false,
@@ -452,7 +451,6 @@ function getUrl() {
       } catch (e) {
         $.logErr(e, resp);
       } finally {
-        if($.again == true) $.again = false
         resolve(data);
       }
     })
