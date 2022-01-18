@@ -12,11 +12,11 @@
 过10分钟再执行
 
 
-cron:1 4,19 8-24 1 *
+cron:1 4,19 18-24 1 *
 ============Quantumultx===============
 [task_local]
 #2022.1.18-1.24 会员联合盛典 瓜分百万京豆
-1 4,19 8-24 1 * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_opencardL51.js, tag=2022.1.18-1.24 会员联合盛典 瓜分百万京豆, enabled=true
+1 4,19 18-24 1 * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_opencardL51.js, tag=2022.1.18-1.24 会员联合盛典 瓜分百万京豆, enabled=true
 
 */
 const $ = new Env("2022.1.18-1.24 会员联合盛典 瓜分百万京豆");
