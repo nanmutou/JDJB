@@ -23,7 +23,7 @@ cron:6 14 18-24 1 *
 6 14 18-24 1 * jd_opencardL50.js, tag=1.18~1.24 婴乐家会员日, enabled=true
 
 */
-*/
+
 const $ = new Env("1.18~1.24 婴乐家会员日");
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
