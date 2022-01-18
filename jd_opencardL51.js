@@ -198,7 +198,7 @@ async function run() {
     }
     console.log(`${$.score}值 游戏:${$.point}`)
     $.runFalag = true
-    count = parseInt($.score/1000)
+    count = parseInt($.score/100)
     console.log(`抽奖次数为:${count}`)
     for(m=1;count--;m++){
         console.log(`第${m}次抽奖`)
