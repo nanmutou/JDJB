@@ -1,13 +1,13 @@
 # JDJB
 个人自用最全主库，集合可用脚本，适用于青龙面板。
 
-频道：https://t.me/KingRan521
+频道：https://t.me/KingRan521  拉库失败查看频道
 
 拉库命令：
 
 国内鸡：
 
-ql repo https://ghproxy.com/github.com/KingRan/JDJB.git "jd_|jx_|jdCookie" "activity|backUp" "^jd[^_]|USER|utils|function|sign|sendNotify|ql|JDJR"
+ql repo https://github.com.cnpmjs.org/KingRan/JDJB.git "jd_|jx_|jdCookie" "activity|backUp" "^jd[^_]|USER|utils|function|sign|sendNotify|ql|JDJR"
 
 国外鸡：
 
