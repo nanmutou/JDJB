@@ -6,7 +6,7 @@
 第一个CK失效会退出脚本
 
 ————————————————
-入口：[ 1.23~1.28 联合开卡 ()]
+入口：[ 1.23~1.28 联合开卡 (https://jinggengjcq-isv.isvjcloud.com/fronth5/#/pages/unitedCardNew20220123/unitedCardNew20220123?actId=b2d6a99babf64595aac5_220123)]
 
 请求太频繁会被黑ip
 过10分钟再执行
@@ -56,7 +56,7 @@ let activityCookie =''
   $.actId = 'b2d6a99babf64595aac5_220123'
   $.MixNicks = ''
   $.inviteNick = 'k1Nobb+P0er+C2sysxnx/P2KELO9izRVpwCyqu0eqVZ5aW7RHzlMobrzJ/e9r/uf'
-  console.log(`活动地址:`)
+  console.log(`活动地址:https://jinggengjcq-isv.isvjcloud.com/fronth5/#/pages/unitedCardNew20220123/unitedCardNew20220123?actId=b2d6a99babf64595aac5_220123`)
   console.log(`请自行测试有水无水。`)
   for (let i = 0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
