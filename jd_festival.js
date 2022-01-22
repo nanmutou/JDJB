@@ -95,7 +95,7 @@ async function doTask(){
         const result = JSON.parse(data)
         if(logs) $.log(data)
         if(result.code == 200){
-        await $.wait(2000)
+        await $.wait(6200)
         t = result.data.timeStamp
         }else{
            $.log(result.msg+"\n")
@@ -246,7 +246,7 @@ async function getlist(){
        taskItemId = list1.taskItemId
 
        await doTask()
-       await $.wait(2000)
+       await $.wait(6200)
        await DoTask()
        
        }else{
@@ -261,7 +261,7 @@ async function getlist(){
        taskItemId = list3.taskItemId
 
        await doTask()
-       await $.wait(2000)
+       await $.wait(6200)
        await DoTask()
        
        }else{
@@ -276,7 +276,7 @@ async function getlist(){
        taskid = list4.taskId;
        taskItemId = list4.taskItemId
        await doTask()
-       await $.wait(2000)
+       await $.wait(6200)
        await DoTask()
        
        }else{
@@ -291,7 +291,7 @@ async function getlist(){
        taskid = list5.taskId;
        taskItemId = list5.taskItemId
        await doTask()
-       await $.wait(2000)
+       await $.wait(6200)
        await DoTask()
        
        }else{
