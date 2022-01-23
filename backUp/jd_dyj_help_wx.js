@@ -54,7 +54,7 @@ let tools = []
     }
 })()
 function openRedEnvelopeInteract(body = {}) {
-     body.linkId = "PFbUR7wtwUcQ860Sn8WRfw"
+     body.linkId = "J6BvN4C_Jb01SFG0vSMFJg"
      return new Promise(resolve => {
          $.get({
              url: "https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body="+JSON.stringify(body)+"&t=" + Date.now() + "&appid=activities_platform&clientVersion=3.5.6",

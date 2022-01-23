@@ -1,5 +1,5 @@
 /*
-活动入口： 京东极速版-我的-发财大赢家
+活动入口： 微信小程序-京东好物街-发财大赢家
  * /
  * 助力逻辑：优先助力互助码环境变量
  * 环境变量：export dyjCode="redEnvelopeId@inviter"
@@ -38,8 +38,6 @@ if ($.isNode()) {
 }
 const JD_API_HOST = `https://api.m.jd.com`;
 !(async () => {
-	console.log('助力逻辑：优先助力互助码环境变量')
-    console.log('环境变量添加：export dyjCode="redEnvelopeId@inviter" 只支持单个账号助力')
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {
             "open-url": "https://bean.m.jd.com/bean/signIndex.action"
@@ -51,7 +49,7 @@ const JD_API_HOST = `https://api.m.jd.com`;
     $.needhelp = true
     $.canDraw = false
     $.canHelp = true;
-    $.linkid = "PFbUR7wtwUcQ860Sn8WRfw"
+    $.linkid = "J6BvN4C_Jb01SFG0vSMFJg"
     //开红包查询
     for (let i = 0; i < cookiesArr.length && $.needhelp; i++) {
         cookie = cookiesArr[i];
@@ -84,7 +82,7 @@ const JD_API_HOST = `https://api.m.jd.com`;
             }
         }
     }
-    if (new Date().getHours() >= 10) {
+    if (new Date().getHours() >= 0) {
         await getAuthorShareCode()
         if ($.authorCode && $.authorCode.length) {
             for (let i = 0; i < cookiesArr.length; i++) {
