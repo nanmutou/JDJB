@@ -1,5 +1,5 @@
 /*
-年货节火力值
+京东领红包
 脚本兼容: Node.js
 返利变量：jd_rebateCode，若需要返利给自己，请自己修改环境变量
 SCLyQi4换成自己的返利
@@ -10,20 +10,20 @@ pin1换成对应的pin值 用,分开
 export jd_rebatePin="pin1,pin2"
 ============Quantumultx===============
 [task_local]
-#年货节火力值
-0 0,10,20,22 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_nhjred.js, tag=年货节火力值, enabled=true
+#京东领红包
+0 0,10,20,22 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_red.js, tag=京东领红包, enabled=true
 
 ================Loon==============
 [Script]
-cron "0 0,10,20,22 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js,tag=年货节火力值
+cron "0 0,10,20,22 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_red.js,tag=京东领红包
 
 ===============Surge=================
-年货节火力值 = type=cron,cronexp="0 0,10,20,22 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js
+京东领红包 = type=cron,cronexp="0 0,10,20,22 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_red.js
 
 ============小火箭=========
-年货节火力值 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/d_nhjred.js, cronexpr="0 0,10,20,22 * * *", timeout=3600, enable=true
+京东领红包 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_red.js, cronexpr="0 0,10,20,22 * * *", timeout=3600, enable=true
 */
-const $ = new Env('年货节火力值');
+const $ = new Env('京东领红包');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let rebateCodes = ''
@@ -141,9 +141,9 @@ let timeH = $.time('H')
   }
   if(Object.getOwnPropertyNames($.shareCodeArr).length > 0 && $.shareCodeArr["updateTime"] != pinUpdateTime) $.setdata($.shareCodeArr,'jd_JDnhjRed')
   if(message){
-    $.msg($.name, ``, `${message}\nhttps://u.jd.com/SKib2Yf\n\n跳转到app 可查看助力情况`);
+    $.msg($.name, ``, `${message}\nhttps://u.jd.com/PC8TEnS\n\n跳转到app 可查看助力情况`);
     if ($.isNode()){
-      // await notify.sendNotify(`${$.name}`, `${message}\n\nhttps://u.jd.com/SKib2Yf\n跳转到app 可查看助力情况`);
+      // await notify.sendNotify(`${$.name}`, `${message}\n\nhttps://u.jd.com/PC8TEnS\n跳转到app 可查看助力情况`);
     }
   }
 })()
@@ -152,7 +152,7 @@ let timeH = $.time('H')
 
 async function run(type = 0){
   try{
-    rebateCodes = ["SKib2Yf", "SMy132Y", "SLyGhBd"];
+    rebateCodes = ["PC8TEnS", "PC8pEWg", "Pd8B3sJ"];
     rebateCodes = rebateCodes[Math.floor((Math.random() * rebateCodes.length))]
     rebateCodes = $.isNode() ? (process.env.jd_rebateCode ? process.env.jd_rebateCode : `${rebateCodes}`) : ($.getdata('jd_rebateCode') ? $.getdata('jd_rebateCode') : `${rebateCodes}`);
     rebateCode = rebateCodes
