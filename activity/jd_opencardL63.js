@@ -14,7 +14,7 @@
 ============Quantumultx===============
 [task_local]
 #2022.1.21-2022.1.30 联合关注
-20 17 * * * opencardL63.js, tag=2022.1.21-2022.1.30 联合关注, enabled=true
+20 17 * * * jd_opencardL63.js, tag=2022.1.21-2022.1.30 联合关注, enabled=true
 
 */
 let guaunknownTask_addSku = "true"
