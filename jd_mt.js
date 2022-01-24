@@ -2,7 +2,7 @@
 组队分豆-美泰 [jd_mt.js]
 
 ————————————————
-入口：[组队分豆-美泰 (https://lzkjdz-isv.isvjcloud.com/pool/captain/4471266?activityId=4e3b9b6233104c199c0c44ff6edbc85d&signUuid=5e5d87e47a8a4f8ab2656e2ce879dc00)]
+入口：[组队分豆-美泰 (https://lzkjdz-isv.isvjcloud.com/pool/captain/725732?activityId=9a1508ec3d2549dfa8187dcbfd590a34&signUuid=5e5d87e47a8a4f8ab2656e2ce879dc00)]
 IOS等用户直接用NobyDa的jd cookie
 ============Quantumultx===============
 [task_local]
