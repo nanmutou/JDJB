@@ -67,7 +67,7 @@ if ($.isNode()) {
             $.authorCode = ownCode ? ownCode : authorCodeList[random(0, authorCodeList.length)]
             $.authorNum = `${random(1000000, 9999999)}`
             $.activityId = '9a1508ec3d2549dfa8187dcbfd590a34'
-            $.activityShopId = '1000014803'
+            $.activityShopId = '1000001879'
             $.activityUrl = `https://lzkjdz-isv.isvjcloud.com/pool/captain/${$.authorNum}?activityId=${$.activityId}&signUuid=${encodeURIComponent($.authorCode)}&adsource=null&shareuserid4minipg=null&shopid=${$.activityShopId}&lng=00.000000&lat=00.000000&sid=&un_area=`
             await mn();
             await $.wait(3000)
@@ -116,8 +116,8 @@ async function mn() {
                     if (!$.activityContent.openCard) {
                         $.log("加入会员")
                         await $.wait(2000)
-                        await getShopOpenCardInfo({ "venderId": "1000014803", "channel": 401 }, 1000014803)
-                        await bindWithVender({ "venderId": "1000014803", "shopId": "1000014803", "bindByVerifyCodeFlag": 1, "registerExtend": {}, "writeChildFlag": 0, "activityId": 3282318, "channel": 401 }, 100000000000085)
+                        await getShopOpenCardInfo({ "venderId": "1000001879", "channel": 401 }, 1000001879)
+                        await bindWithVender({ "venderId": "1000001879", "shopId": "1000001879", "bindByVerifyCodeFlag": 1, "registerExtend": {}, "writeChildFlag": 0, "activityId": 3282318, "channel": 401 }, 100000000000085)
                     }
                     await $.wait(2000)
                     await task('activityContent', `activityId=${$.activityId}&pin=${encodeURIComponent($.secretPin)}&signUuid=${encodeURIComponent($.authorCode)}`, 0, 1)
