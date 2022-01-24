@@ -7,14 +7,14 @@ IOS等用户直接用NobyDa的jd cookie
 ============Quantumultx===============
 [task_local]
 #组队分豆-美泰
-18 1,16 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js, tag=组队分豆-美泰, enabled=true
+18 2,14 * * * https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js, tag=组队分豆-美泰, enabled=true
 ================Loon==============
 [Script]
-cron "18 1,16 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js,tag=组队分豆-美泰
+cron "18 2,14 * * *" script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js,tag=组队分豆-美泰
 ===============Surge=================
-组队分豆-美泰 = type=cron,cronexp="18 1,16 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js
+组队分豆-美泰 = type=cron,cronexp="18 2,14 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js
 ============小火箭=========
-组队分豆-美泰 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js, cronexpr="18 1,16 * * *", timeout=3600, enable=true
+组队分豆-美泰 = type=cron,script-path=https://raw.githubusercontent.com/KingRan/JDJB/main/jd_mt.js, cronexpr="18 2,14 * * *", timeout=3600, enable=true
 */
 const $ = new Env("组队分豆-美泰");
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -69,7 +69,7 @@ if ($.isNode()) {
             $.activityId = '9a1508ec3d2549dfa8187dcbfd590a34'
             $.activityShopId = '1000001879'
             $.activityUrl = `https://lzkjdz-isv.isvjcloud.com/pool/captain/${$.authorNum}?activityId=${$.activityId}&signUuid=${encodeURIComponent($.authorCode)}&adsource=null&shareuserid4minipg=null&shopid=${$.activityShopId}&lng=00.000000&lat=00.000000&sid=&un_area=`
-            await mn();
+            await mt();
             await $.wait(3000)
             if ($.bean > 0) {
                 message += `\n【京东账号${$.index}】${$.nickName || $.UserName} \n       └ 获得 ${$.bean} 京豆。`
@@ -92,7 +92,7 @@ if ($.isNode()) {
     })
 
 
-async function mn() {
+async function mt() {
     $.token = null;
     $.secretPin = null;
     $.openCardActivityId = null
