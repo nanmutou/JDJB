@@ -30,7 +30,6 @@ let cookiesArr = [], cookie = '', message;
 const linkIdArr = ["7ya6o83WSbNhrbYJqsMfFA","Eu7-E0CUzqYyhZJo9d3YkQ"];
 const signLinkId = '9WA12jYGulArzWS7vcrwhw';
 let linkId;
-let isBlack = false;
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -81,23 +80,15 @@ if ($.isNode()) {
 async function jsRedPacket() {
   try {
     await invite2();
-    await $.wait(1500)
     //await sign();//极速版签到提现
     await reward_query();
-    if (!isBlack) {
+    for (let i = 0; i < 3; ++i) {
+      await redPacket();//开红包
       await $.wait(2000)
-      for (let i = 0; i < 3; ++i) {
-        await redPacket();
-        await $.wait(5000)
-      }
-
-      // 领红包提现
-      await getPacketList();
-      await $.wait(2000)
-      await signPrizeDetailList();
-      await $.wait(2000)
-      await showMsg()
     }
+    await getPacketList();//领红包提现
+    await signPrizeDetailList();
+    await showMsg()
   } catch (e) {
     $.logErr(e)
   }
@@ -122,7 +113,7 @@ async function sign() {
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "*/*",
         "Connection": "keep-alive",
-        "User-Agent": $.isNode() ? (process.env.JS_USER_AGENT ? process.env.JS_USER_AGENT : (require('./JS_USER_AGENTS').USER_AGENT)) : ($.getdata('JSUA') ? $.getdata('JSUA') : "'jdltapp;iPad;3.1.0;14.4;network/wifi;Mozilla/5.0 (iPad; CPU OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+        "User-Agent": "jdltapp;iPhone;3.3.2;14.5.1network/wifi;hasUPPay/0;pushNoticeIsOpen/1;lang/zh_CN;model/iPhone13,2;addressid/137923973;hasOCPay/0;appBuild/1047;supportBestPay/0;pv/467.11;apprpd/MyJD_Main;",
         "Accept-Language": "zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8",
         'Referer': `https://daily-redpacket.jd.com/?activityId=${signLinkId}`,
         "Accept-Encoding": "gzip, deflate, br"
@@ -173,7 +164,6 @@ function reward_query() {
 
             } else {
               console.log(data.errMsg)
-              isBlack = true;
             }
           }
         }
@@ -205,7 +195,6 @@ async function redPacket() {
                   }
                 } else {
                   console.log(data.errMsg)
-                  isBlack = true;
                 }
               }
             }
@@ -238,7 +227,6 @@ function getPacketList() {
               }
             } else {
               console.log(data.errMsg)
-              isBlack = true;
             }
           }
         }
@@ -263,7 +251,7 @@ function signPrizeDetailList() {
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "*/*",
         "Connection": "keep-alive",
-        "User-Agent": $.isNode() ? (process.env.JS_USER_AGENT ? process.env.JS_USER_AGENT : (require('./JS_USER_AGENTS').USER_AGENT)) : ($.getdata('JSUA') ? $.getdata('JSUA') : "'jdltapp;iPad;3.1.0;14.4;network/wifi;Mozilla/5.0 (iPad; CPU OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+        "User-Agent": "jdltapp;iPhone;3.3.2;14.5.1network/wifi;hasUPPay/0;pushNoticeIsOpen/1;lang/zh_CN;model/iPhone13,2;addressid/137923973;hasOCPay/0;appBuild/1047;supportBestPay/0;pv/467.11;apprpd/MyJD_Main;",
         "Accept-Language": "zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8",
         'Referer': `https://daily-redpacket.jd.com/?activityId=${signLinkId}`,
         "Accept-Encoding": "gzip, deflate, br"
@@ -325,7 +313,7 @@ function apCashWithDraw(id, poolBaseId, prizeGroupId, prizeBaseId) {
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "*/*",
         "Connection": "keep-alive",
-        "User-Agent": $.isNode() ? (process.env.JS_USER_AGENT ? process.env.JS_USER_AGENT : (require('./JS_USER_AGENTS').USER_AGENT)) : ($.getdata('JSUA') ? $.getdata('JSUA') : "'jdltapp;iPad;3.1.0;14.4;network/wifi;Mozilla/5.0 (iPad; CPU OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+        "User-Agent": "jdltapp;iPhone;3.3.2;14.5.1network/wifi;hasUPPay/0;pushNoticeIsOpen/1;lang/zh_CN;model/iPhone13,2;addressid/137923973;hasOCPay/0;appBuild/1047;supportBestPay/0;pv/467.11;apprpd/MyJD_Main;",
         "Accept-Language": "zh-Hans-CN;q=1, en-CN;q=0.9, zh-Hant-CN;q=0.8",
         'Referer': `https://daily-redpacket.jd.com/?activityId=${signLinkId}`,
         "Accept-Encoding": "gzip, deflate, br"
@@ -440,7 +428,8 @@ function taskPostUrl(function_id, body) {
       'Host': 'api.m.jd.com',
       'Accept': '*/*',
       'Connection': 'keep-alive',
-      'user-agent': $.isNode() ? (process.env.JS_USER_AGENT ? process.env.JS_USER_AGENT : (require('./JS_USER_AGENTS').USER_AGENT)) : ($.getdata('JSUA') ? $.getdata('JSUA') : "'jdltapp;iPad;3.1.0;14.4;network/wifi;Mozilla/5.0 (iPad; CPU OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+      // 'user-agent': $.isNode() ? (process.env.JS_USER_AGENT ? process.env.JS_USER_AGENT : (require('./JS_USER_AGENTS').USER_AGENT)) : ($.getdata('JSUA') ? $.getdata('JSUA') : "'jdltapp;iPad;3.1.0;14.4;network/wifi;Mozilla/5.0 (iPad; CPU OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+      'user-agent': "jdltapp;iPhone;3.3.2;14.3;b488010ad24c40885d846e66931abaf532ed26a5;network/4g;hasUPPay/0;pushNoticeIsOpen/0;lang/zh_CN;model/iPhone11,8;addressid/2005183373;hasOCPay/0;appBuild/1049;supportBestPay/0;pv/220.46;apprpd/;ref/JDLTSubMainPageViewController;psq/0;ads/;psn/b488010ad24c40885d846e66931abaf532ed26a5|520;jdv/0|iosapp|t_335139774|liteshare|CopyURL|1618673222002|1618673227;adk/;app_device/IOS;pap/JA2020_3112531|3.3.2|IOS 14.3;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1 ",
       'Accept-Language': 'zh-Hans-CN;q=1,en-CN;q=0.9',
       'Accept-Encoding': 'gzip, deflate, br',
       'Content-Type': "application/x-www-form-urlencoded",
