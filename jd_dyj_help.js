@@ -14,7 +14,7 @@ let helps = []
 let tools = []
 
 !(async () => {
-	console.log("需要被助力的号手动开启活动后才能助力成功/n活动入口： 微信小程序-京东好物街-发财大赢家")
+	console.log("\n需要被助力的号手动开启活动后才能助力成功\n活动入口： 微信小程序-京东好物街-发财大赢家\n")
     await requireConfig()
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {
