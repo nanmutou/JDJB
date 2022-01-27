@@ -311,7 +311,7 @@ function getAuthorShareCode(url) {
 }
 
 function taskurl(function_path, body = '', stk) {
-  let url = `${BASE_URL}/${function_path}?activeId=${$.activeId}&publishFlag=1&channel=7&${body}&sceneval=2&g_login_type=1&timestamp=${token['timestamp']}&_=${Date.now() + 2}&_ste=1`
+    let url = `${BASE_URL}/${function_path}?activeId=${$.activeId}&publishFlag=1&userDraw=0&channel=7&${body}&sceneval=2&g_login_type=1&timestamp=${token['timestamp']}&_=${Date.now() + 2}&_t=${Date.now() + 2}&_ste=activeId`
   url += `&phoneid=${token['phoneid']}`
   url += `&stepreward_jstoken=${token['farm_jstoken']}`
   if (stk) {
