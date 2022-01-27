@@ -156,7 +156,7 @@ async function main() {
     if(fcwbinviter && fcwbinviteCode){
         console.log(`去助力:${fcwbinviter}`);
         await takeRequest(`happyDigHelp`,`{"linkId":"${link}","inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}`);
-        //console.log(`助力结果：${JSON.stringify(HelpInfo)}`);
+        //console.log(`助力结果：${JSON.stringify(homeInfo)}`);
     }
     $.freshFlag = false;
     if($.index === 1){
@@ -180,24 +180,25 @@ async function doTask(){
             continue;
         }
         if(oneTask.taskType === 'BROWSE_CHANNEL'){
-            if(oneTask.id === 360){
+            if(oneTask.id === 454){
                 console.log(`任务：${oneTask.taskTitle},${oneTask.taskShowTitle},去执行`);
                 let doTask = await takeRequest(`apDoTask`,`{"linkId":"${link}","taskType":"${oneTask.taskType}","taskId":${oneTask.id},"channel":4,"itemId":"${encodeURIComponent(oneTask.taskSourceUrl)}","checkVersion":false}`);
                 console.log(`执行结果：${JSON.stringify(doTask)}`);
                 await $.wait(2000);
                 $.freshFlag = true;
             }
-            if(oneTask.id === 357){
-                // let detail = await takeRequest(`apTaskDetail`,`{"linkId":"${link}","taskType":"${oneTask.taskType}","taskId":${oneTask.id},"channel":4}`);
-                // await $.wait(1000);
-                // let status = detail.status;
-                // let taskItemList =  detail.taskItemList;
-                // for (let j = 0; j < taskItemList.length && j < (status.finishNeed - status.userFinishedTimes); j++) {
-                //     console.log(`浏览：${taskItemList[j].itemName}`);
-                //     let doTask = await takeRequest(`apDoTask`,`{"linkId":"${link}","taskType":"${oneTask.taskType}","taskId":${oneTask.id},"channel":4,"itemId":"${encodeURIComponent(taskItemList[j].itemId)}","checkVersion":false}`);
-                //     console.log(`执行结果：${JSON.stringify(doTask)}`);
-                //     await $.wait(2000);
-                // }
+            if(oneTask.id === 504){
+                 //let detail = await takeRequest(`apTaskDetail`,`{"linkId":"${link}","taskType":"${oneTask.taskType}","taskId":${oneTask.id},"channel":4}`);
+                 //await $.wait(1000);
+                 //let status = detail.status;
+                 //let taskItemList =  detail.taskItemList;
+                 //for (let j = 0; j < taskItemList.length && j < (status.finishNeed - status.userFinishedTimes); j++) {
+                     //console.log(`浏览：${taskItemList[j].itemName}`);
+                     //let doTask = await takeRequest(`apTaskTimeRecord`,`{"linkId":"${link}","taskType":"${oneTask.taskType}","taskId":${oneTask.id},"channel":4,"itemId":"${encodeURIComponent(taskItemList[j].itemId)}","checkVersion":false}`);
+                     //await $.wait(31000);
+					 //console.log(`执行结果：${JSON.stringify(doTask)}`);
+                     //await $.wait(2000);
+                 //}
             }
         }
     }
