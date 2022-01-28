@@ -17,6 +17,8 @@ https://pd.zwc365.com/cfworker/
 
 ql repo https://github.com/KingRan/JDJB.git "jd_|jx_|jdCookie" "activity|backUp" "^jd[^_]|USER|utils|function|sign|sendNotify|ql|JDJR"
 
+出现拉取失败的进入容器→进入repo文件夹→删除整个库文件夹→重新拉取
+
 
 1、搬运整理，感谢所有原作者。
 
