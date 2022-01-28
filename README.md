@@ -5,11 +5,9 @@
 
 拉库命令：
 
-国内鸡：
+国内鸡：（TX云等）
 
-ql repo https://github.com.cnpmjs.org/KingRan/JDJB.git "jd_|jx_|jdCookie" "activity|backUp" "^jd[^_]|USER|utils|function|sign|sendNotify|ql|JDJR"
-
-国内鸡（TX云等）修改青龙 config.sh 文件中的GithubProxyUrl参数为：
+修改青龙 config.sh 文件中的GithubProxyUrl参数为：
 https://pd.zwc365.com/ 或 
 https://pd.zwc365.com/cfworker/
 
