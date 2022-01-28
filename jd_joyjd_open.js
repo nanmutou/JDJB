@@ -151,7 +151,7 @@ async function main() {
         console.log(`任务列表：${activityID},获取成功`);
         $.moduleBaseInfo = $.activity.moduleBaseInfo;
         $.dailyTaskList = $.activity.dailyTask.taskList;
-        if($.moduleBaseInfo.rewardStatus === 1){
+        if($.moduleBaseInfo.rewardStatus === 3){
             console.log(`领取最后奖励`);
             await getReward();
         }
