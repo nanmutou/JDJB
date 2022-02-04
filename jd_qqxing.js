@@ -3,7 +3,7 @@
 活动入口：QQ星儿童牛奶京东自营旗舰店->品牌会员->星系牧场
 [task_local]
 #星系牧场
-1 0-23/4 * * * jd_qqxing.js
+22 4-22/3 * * * * * * jd_qqxing.js
 */
 const $ = new Env('QQ星系牧场');
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -101,7 +101,7 @@ $.shareuuid = ["bf3ffb1c973a49acbac4983ac15162f3", "be5c05485b624d69b2bb1acee71f
                     let exchanges =Math.floor($.foodNum/10000)
                     console.log(`可兑换 ${exchanges} 次 100京🐶`)
                     for(q = 0;q<exchanges && Exchange;q++){
-                    await exchange(16)   //16是100豆，14是50豆，13是20豆
+                    await exchange(14)   //16是100豆，14是50豆，13是20豆
                     }
                     await getinfo()
                     if(!Exchange){console.log("你 默认 不兑换东西,请自行进去活动兑换")}
@@ -115,7 +115,7 @@ $.shareuuid = ["bf3ffb1c973a49acbac4983ac15162f3", "be5c05485b624d69b2bb1acee71f
         }
         if (message.length != 0) {
         if ($.isNode()) {
-           await notify.sendNotify("星系牧场", `${message}\n牧场入口：QQ星儿童牛奶京东自营旗舰店->星系牧场\n\n吹水群：https://t.me/wenmouxx`);
+           await notify.sendNotify("星系牧场", `${message}\n牧场入口：QQ星儿童牛奶京东自营旗舰店->星系牧场\n\n`);
    }  else {
             $.msg($.name, "", '星系牧场' + message)
         }
