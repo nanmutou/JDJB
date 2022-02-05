@@ -88,7 +88,7 @@ async function jdCash() {
   await appindex()
   await index()
 
-  await shareCodesFormat()
+  //await shareCodesFormat()
   // await helpFriends()
   // await getReward()
   // await getReward('2');
